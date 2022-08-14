@@ -68,3 +68,5 @@
 ::1 - - [13/Aug/2022:12:32:04 +0000] "GET /code HTTP/1.1" 200 7242 "http://localhost:3010/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
 ::ffff:127.0.0.1 - - [13/Aug/2022:12:32:07 +0000] "GET /login?userName=admin&passWord=123456&verify= HTTP/1.1" 200 202 "http://localhost:3010/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
 ::ffff:127.0.0.1 - - [13/Aug/2022:12:32:07 +0000] "GET /menu HTTP/1.1" 200 527 "http://localhost:3010/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+::1 - - [14/Aug/2022:03:38:38 +0000] "GET /code HTTP/1.1" 200 8904 "http://localhost:3010/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
+::1 - - [14/Aug/2022:03:39:26 +0000] "GET /code HTTP/1.1" 200 9287 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"

@@ -16,6 +16,7 @@
     "koa-session": "^6.2.0",
     "mongoose": "^6.5.2",
     "node-rsa": "^1.1.1",
+    "redis": "^4.2.0",
     "svg-captcha": "^1.4.0"
   }
 }

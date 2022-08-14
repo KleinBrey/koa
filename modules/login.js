@@ -1,4 +1,4 @@
-const mongoose = require("../db/connect");
+const mongoose = require("../dataBase/mongodb/connect");
 const schema = mongoose.Schema;
 const loginModel = new schema(
   {

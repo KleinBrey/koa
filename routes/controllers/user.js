@@ -15,7 +15,7 @@ exports.registeCode = async (ctx) => {
     color: true, //验证码字符是否有颜色，默认是没有，但是如果设置了背景颜色，那么默认就是有字符颜色
     background: "#ccc", //beijing
   });
-  
+
   ctx.session.captcha = captcha.text; // session 存储
   ctx.response.type = "image/svg+xml";
   ctx.body = captcha.data;
@@ -70,6 +70,50 @@ exports.registe = async (ctx) => {
 
 // 目录
 exports.menulist = async (ctx, next) => {
+  operation.create(menu, {
+    code: 200,
+    data: [
+      {
+        path: "/firsthome",
+        name: "firsthome",
+        title: "首页",
+      },
+      {
+        path: "/jsfundamental",
+        name: "jsfundamental",
+        title: "JS基础",
+        children: [
+          {
+            path: "/home",
+            name: "home",
+            title: "测试一",
+          },
+          {
+            path: "/promise",
+            name: "promise",
+            title: "测试二",
+          },
+          {
+            path: "/prototype",
+            name: "prototype",
+            title: "原型",
+          },
+        ],
+      },
+      {
+        path: "/vueFunction",
+        name: "vueFunction",
+        title: "Vue效果",
+        children: [
+          {
+            path: "/vueFunction/buttoneffect",
+            name: "buttoneffect",
+            title: "动态按钮",
+          },
+        ],
+      },
+    ],
+  });
   let menulist = await operation.find(menu, { code: 200 });
   ctx.body = menulist[0];
 };

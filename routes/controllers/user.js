@@ -1,9 +1,11 @@
-const menu = require("../../modules/menu");
 const userdata = require("../../modules/login");
 const operation = require("../../dataBase/mongodb/operation");
 const NodeRSA = require("node-rsa");
 const svgCaptcha = require("svg-captcha");
+const myuserInfo = require("../../modules/userinfo");
+const menu = require("../../modules/menu");
 
+// console.log(userInfo)
 // 生成验证码
 exports.registeCode = async (ctx) => {
   const captcha = svgCaptcha.create({
@@ -70,52 +72,35 @@ exports.registe = async (ctx) => {
 
 // 目录
 exports.menulist = async (ctx, next) => {
-  operation.create(menu, {
-    code: 200,
-    data: [
-      {
-        path: "/firsthome",
-        name: "firsthome",
-        title: "首页",
-      },
-      {
-        path: "/jsfundamental",
-        name: "jsfundamental",
-        title: "JS基础",
-        children: [
-          {
-            path: "/home",
-            name: "home",
-            title: "测试一",
-          },
-          {
-            path: "/promise",
-            name: "promise",
-            title: "测试二",
-          },
-          {
-            path: "/prototype",
-            name: "prototype",
-            title: "原型",
-          },
-        ],
-      },
-      {
-        path: "/vueFunction",
-        name: "vueFunction",
-        title: "Vue效果",
-        children: [
-          {
-            path: "/vueFunction/buttoneffect",
-            name: "buttoneffect",
-            title: "动态按钮",
-          },
-        ],
-      },
-    ],
-  });
   let menulist = await operation.find(menu, { code: 200 });
   ctx.body = menulist[0];
+};
+
+// 查询用户信息
+exports.getUserinfo = async (ctx, next) => {
+  let userinfo = await operation.find(myuserInfo, {});
+  console.log(userinfo);
+  const responseData = {
+    code: 200,
+    data: userinfo,
+  };
+  ctx.body = responseData;
+};
+// 保存用户信息
+exports.setUserinfo = async (ctx, next) => {
+  const postData = ctx.request.body;
+  let userinfo = await operation.save(myuserInfo, postData);
+  ctx.body = { code: 200 };
+};
+
+exports.updataUserinfo = async (ctx, next) => {
+  const postData = ctx.request.body;
+  console.log(postData);
+  const querydata = { _id: postData.id };
+  let userinfo = await operation.update(myuserInfo, querydata, {
+    $set: postData,
+  });
+  ctx.body = { code: 200 };
 };
 
 // 退出

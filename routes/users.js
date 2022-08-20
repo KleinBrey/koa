@@ -12,6 +12,9 @@ module.exports = function () {
   router.get("/code", User.registeCode);
   router.get("/registe", User.registe);
   router.post("/logout", User.logout);
-
+  router.get("/getUser", User.getUserinfo);
+  router.post("/setUser", User.setUserinfo);
+  router.patch("/updataUser", User.updataUserinfo);
+  
   return router;
 };

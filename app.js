@@ -1,15 +1,21 @@
 const Koa = require("koa");
-// 启动mongodb
-const monogodb = require("./dataBase/mongodb/connect");
-const redis = require("./dataBase/redis/connect");
-const session = require("koa-session");
-// 日志有关的模块
-const logger = require("koa-morgan");
 const path = require("path");
 const fs = require("fs");
+require("./dataBase/mongodb/connect");
+require("./dataBase/redis/connect");
+// mock数据库数据
+// require('./mock/user')
+
+// 基本的插件
+const session = require("koa-session");
+const bodyParser = require("koa-bodyparser");
+
+// 日志有关的模块
+const logger = require("koa-morgan");
 
 const app = new Koa();
-
+// post返回值
+app.use(bodyParser());
 // morgan 处理日志
 const ENV = "prd"; //假设环境参数是prd
 if (ENV === "dev") {
